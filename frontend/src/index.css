@@ -1,0 +1,86 @@
+@import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #faf9f7;
+  --foreground: #292524;
+}
+
+.dark {
+  --background: #0f0f0f;
+  --foreground: #e5e5e5;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: "LXGW WenKai Screen", "LXGW WenKai", sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 确保所有输入框和文本域都可以被正常选中和操作 */
+input, textarea {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  cursor: text;
+}
+
+/* 提高全局选中文本的可见度 */
+::selection {
+  background-color: rgba(59, 130, 246, 0.3); /* 浅蓝色半透明 */
+  color: inherit;
+}
+
+/* 确保文章内的表格在移动端可以横向滚动，而不是被挤压 */
+.prose table th,
+.prose table td {
+  white-space: nowrap;
+  min-width: 120px;
+  padding: 0.75rem 1rem !important;
+}
+
+.prose table td {
+  vertical-align: top;
+}
+
+.prose iframe {
+  width: 100% !important;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.75rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(125, 125, 125, 0.1);
+}
+
+.dark .prose iframe {
+  border-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* 复古像素风阴影 */
+.pixel-shadow {
+  box-shadow: 4px 4px 0px 0px var(--pixel-shadow-color, #1c1917);
+}
+.dark .pixel-shadow {
+  --pixel-shadow-color: #e5e5e5;
+}
+
+/* 重写过渡动画 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}

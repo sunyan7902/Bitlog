@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  bitlog:
+    build: .
+    container_name: bitlog
+    restart: always
+    ports:
+      - "3456:3000"                # 映射容器 3000 端口到宿主机的 3456 端口
+    environment:
+      # 指定 SQLite 数据库存储在持久化挂载区
+      - DATABASE_URL=file:/app/data/bitlog.db
+      - GIN_MODE=release
+      # 可以在这里指定初始管理员账密，首次部署启动时生效
+      # - ADMIN_USERNAME=admin
+      # - ADMIN_PASSWORD=123456
+    volumes:
+      # 宿主机本地 ./data 目录挂载到容器内 /app/data，保存 SQLite 文件和 uploads 图片文件
+      - ./data:/app/data
