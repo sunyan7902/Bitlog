@@ -2,7 +2,7 @@
 
 **Less is More.**
 
-Bitlog 是一个模仿 BearBlog 风格的极简博客系统。它专为热爱写作的人设计，剔成了所有不必要的干扰，提供一个纯粹、安静的创作空间。
+Bitlog 是一个模仿 BearBlog 风格的极简博客系统。它专为热爱写作的人设计，剔除了所有不必要的干扰，提供一个纯粹、安静的创作空间。
 
 本项目已全新重构为 **React SPA (前端) + Go (后端) 前后端分离架构**，在保持原有极简界面与零配置特点的同时，大幅提升了系统的运行性能、响应速度与多平台交叉编译能力。
 
@@ -13,7 +13,7 @@ Bitlog 是一个模仿 BearBlog 风格的极简博客系统。它专为热爱写
 重构后的系统采用现代化、高性能的技术栈：
 
 - **前端 (frontend/)**：基于 **React 19** + **Vite 8** + **TypeScript 6** + **TailwindCSS v4** 构建的现代单页面应用 (SPA)。利用 React Query 进行数据缓存，React Router 7 处理动态路由，实现无刷新的页面切换与极速流畅的交互体验。
-- **后端 (backend/)**：基于 **Go 1.24** + **Gin 框架** + **GORM ORM** 实现的高性能 RESTful API 服务。
+- **后端 (backend/)**：基于 **Go 1.25** + **Gin 框架** + **GORM ORM** 实现的高性能 RESTful API 服务。
 - **数据库**：使用 **SQLite 嵌入式数据库**。为了支持 `CGO_ENABLED=0` 纯 Go 交叉编译，底层驱动采用纯 Go 实现的 `github.com/glebarez/sqlite`，彻底免除了对宿主机 GCC 编译器的依赖。
 - **同源极简部署**：生产环境下，前端编译产物会被打包进 Go 后端的静态资源托管区，由单一 Go 二进制可执行文件完成接口服务、静态托管与附件上传的所有职能。
 
@@ -52,7 +52,6 @@ Bitlog 是一个模仿 BearBlog 风格的极简博客系统。它专为热爱写
 ## 📂 项目结构
 
 ```text
-├── archive_nextjs/         # 归档备份的原 Next.js 全栈代码 (备查)
 ├── frontend/               # React SPA 前端工程
 │   ├── src/                # 前端组件、页面视图、路由上下文
 │   ├── public/             # 公共静态资源 (含 favicon.ico)
@@ -77,8 +76,8 @@ Bitlog 是一个模仿 BearBlog 风格的极简博客系统。它专为热爱写
 最简单、快捷且保持环境整洁的部署方案。多阶段构建会自动进行前端编译与后端静态编译，并打包进极简的 Alpine 容器运行。
 
 ```bash
-git clone https://github.com/ifndf/limblog.git
-cd limblog
+git clone https://github.com/sunyan7902/Bitlog.git
+cd Bitlog
 sudo docker compose up -d --build
 ```
 
@@ -93,7 +92,7 @@ sudo docker compose up -d --build
 
 ## 💻 本地开发调试
 
-本地开发需要安装有 [Node.js](https://nodejs.org/) >= 20 和 [Go](https://go.dev/) >= 1.22。
+本地开发需要安装有 [Node.js](https://nodejs.org/) >= 20 和 [Go](https://go.dev/) >= 1.25。
 
 ### 1. 运行 Go 后端服务
 ```bash
@@ -132,4 +131,4 @@ npm run dev
 
 本项目基于 MIT 协议开源。
 
-**Powered by [Bitlog](https://github.com/ifndf/limblog)**
+**Powered by [Bitlog](https://github.com/sunyan7902/Bitlog)**
